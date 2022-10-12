@@ -5,8 +5,8 @@
         <h2>Register</h2>
       </header>
       <form class="register-form" @submit.prevent="registrar">
-        <input type="text" placeholder="email address" v-model="email"/>
-        <input type="password" placeholder="password" v-model="password"/>
+        <input type="text" placeholder="email address" v-model="email" />
+        <input type="password" placeholder="password" v-model="password" />
         <button>create</button>
         <p class="message">
           Already registered? <RouterLink to="/">Sign In</RouterLink>
@@ -17,17 +17,17 @@
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import { ref } from "vue";
 
-const email = ref('')
-const password = ref('')
 
-const registrar = ()=>{
-    console.log('registrando...')
-    console.log("🚀 ~ file: Registro.vue ~ line 23 ~ email", email.value)
-    console.log("🚀 ~ file: Registro.vue ~ line 25 ~ password", password.value)
-}
+const email = ref("");
+const password = ref("");
 
+const registrar = () => {
+  console.log("registrando...");
+  console.log("🚀 ~ file: Registro.vue ~ line 23 ~ email", email.value);
+  console.log("🚀 ~ file: Registro.vue ~ line 25 ~ password", password.value);
+};
 </script>
 
 <style scoped>
