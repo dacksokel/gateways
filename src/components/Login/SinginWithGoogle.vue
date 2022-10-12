@@ -1,8 +1,37 @@
 <script setup>
 import { ref } from "vue";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
+import {useRouter } from 'vue-router'
+import { notify } from "@kyvg/vue3-notification";
 
-const singGoogle = () => {
+
+const provider = new GoogleAuthProvider();
+const auth = getAuth();
+const router = useRouter()
+
+const singGoogle = async () => {
   console.log("sing in with google");
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    notify({
+      type: "success",
+      title: "Login correcto :D",
+    });
+    router.push("/dashboard");
+ 
+  } catch (error) {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+  }
 };
 </script>
 
