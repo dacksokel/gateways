@@ -20,13 +20,15 @@
 import { ref } from "vue";
 import { getAuth, createUserWithEmailAndPassword } from "@firebase/auth";
 import { notify } from "@kyvg/vue3-notification";
+import { useRouter } from "vue-router";
 
 const email = ref("");
 const password = ref("");
+const router = useRouter()
 
 const registrar = async () => {
   try {
-    let data = await createUserWithEmailAndPassword(
+    await createUserWithEmailAndPassword(
       getAuth(),
       email.value,
       password.value
@@ -36,6 +38,7 @@ const registrar = async () => {
       type: 'success',
       title: 'Registro Existoso 🎉!!'
     })
+    router.push('/login')
 
   } catch (error) {
     if (error.code == 'auth/email-already-in-use') {
