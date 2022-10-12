@@ -32,11 +32,15 @@ const registrar = async () => {
       password.value
     );
 
-    if (data) console.log("registrado correctamente");
+    notify({
+      type: 'success',
+      title: 'Registro Existoso 🎉!!'
+    })
+
   } catch (error) {
     if (error.code == 'auth/email-already-in-use') {
       notify({
-        type:'error',
+        type: 'error',
         title: "ESTE CORREO YA ESTA REGISTRADO",
       });
     }
