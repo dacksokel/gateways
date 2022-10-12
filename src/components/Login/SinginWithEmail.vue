@@ -1,34 +1,30 @@
-<template>
-  <div class="login-page">
-    <div class="form">
-      <header>
-        <h2>Register</h2>
-      </header>
-      <form class="register-form" @submit.prevent="registrar">
-        <input type="text" placeholder="email address" v-model="email" />
-        <input type="password" placeholder="password" v-model="password" />
-        <button>create</button>
-        <p class="message">
-          Already registered? <RouterLink to="/">Sign In</RouterLink>
-        </p>
-      </form>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref } from "vue";
-
 
 const email = ref("");
 const password = ref("");
 
-const registrar = () => {
-  console.log("registrando...");
-  console.log("🚀 ~ file: Registro.vue ~ line 23 ~ email", email.value);
-  console.log("🚀 ~ file: Registro.vue ~ line 25 ~ password", password.value);
+const onSubmit = () => {
+  console.log("haciendo login");
+  console.log("valor del email ", email.value);
+  console.log("valor del pwd ", password.value);
 };
 </script>
+
+<template>
+  <header>
+    <h2>LOGIN</h2>
+  </header>
+  <form class="login-form" @submit.prevent="onSubmit">
+    <input type="text" placeholder="username" v-model="email" />
+    <input type="password" placeholder="password" v-model="password" />
+    <button>login</button>
+    <p class="message">
+      Not registered?
+      <RouterLink to="/registro">Create an account</RouterLink>
+    </p>
+  </form>
+</template>
 
 <style scoped>
 .login-page {
@@ -60,7 +56,7 @@ const registrar = () => {
   font-size: 14px;
 }
 
-.form button {
+.login-form button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -75,25 +71,21 @@ const registrar = () => {
   cursor: pointer;
 }
 
-.form button:hover,
-.form button:active,
-.form button:focus {
+.login-form button:hover,
+.login-form button:active,
+.login-form button:focus {
   background: #43a047;
 }
 
-.form .message {
+.login-form .message {
   margin: 15px 0 0;
   color: #b3b3b3;
   font-size: 12px;
 }
 
-.form .message a {
+.login-form .message a {
   color: #4caf50;
   text-decoration: none;
-}
-
-.form .register-form {
-  display: block;
 }
 
 .container {

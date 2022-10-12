@@ -1,46 +1,19 @@
 <script setup>
 import { onMounted, ref } from "vue";
-
-const email = ref("");
-const password = ref("");
-
-const onSubmit = () => {
-  console.log("haciendo login");
-  console.log("valor del email ", email.value);
-  console.log("valor del pwd ", password.value);
-};
-
-const singGoogle = ()=>{
-  console.log("sing in with google")
-}
-onMounted(() => { });
+import SinginWithEmail from './Login/SinginWithEmail.vue'
+import SinginWithGoogle from "./Login/SinginWithGoogle.vue";
 </script>
 
 <template>
   <div class="login-page">
     <div class="form">
-      <header>
-        <h2>LOGIN</h2>
-      </header>
-      <form class="login-form" @submit.prevent="onSubmit">
-        <input type="text" placeholder="username" v-model="email" />
-        <input type="password" placeholder="password" v-model="password" />
-        <button>login</button>
-        <p class="message">
-          Not registered?
-          <RouterLink to="/registro">Create an account</RouterLink>
-        </p>
-      </form>
+      <SinginWithEmail />
       <hr>
-      <div>
-        <p>
-          <button type="button" class="login-with-google-btn" @click="singGoogle">
-            Sign in with Google
-          </button>
-        </p>
-      </div>
+      
+      <SinginWithGoogle />
     </div>
   </div>
+
 </template>
 
 <style scoped>
@@ -61,139 +34,5 @@ onMounted(() => { });
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.form input {
-  font-family: "Roboto", sans-serif;
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-
-.login-form button {
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background: #4caf50;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #ffffff;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-}
-
-.login-form button:hover,
-.login-form button:active,
-.login-form button:focus {
-  background: #43a047;
-}
-
-.login-form .message {
-  margin: 15px 0 0;
-  color: #b3b3b3;
-  font-size: 12px;
-}
-
-.login-form .message a {
-  color: #4caf50;
-  text-decoration: none;
-}
-
-.container {
-  position: relative;
-  z-index: 1;
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-.container:before,
-.container:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.container .info {
-  margin: 50px auto;
-  text-align: center;
-}
-
-.container .info h1 {
-  margin: 0 0 15px;
-  padding: 0;
-  font-size: 36px;
-  font-weight: 300;
-  color: #1a1a1a;
-}
-
-.container .info span {
-  color: #4d4d4d;
-  font-size: 12px;
-}
-
-.container .info span a {
-  color: #000000;
-  text-decoration: none;
-}
-
-.container .info span .fa {
-  color: #ef3b3a;
-}
-
-body {
-  background: #76b852;
-  /* fallback for old browsers */
-  background: rgb(141, 194, 111);
-  background: linear-gradient(90deg,
-      rgba(141, 194, 111, 1) 0%,
-      rgba(118, 184, 82, 1) 50%);
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Estilos para boton de login with google */
-.login-with-google-btn {
-  transition: background-color 0.3s, box-shadow 0.3s;
-  padding: 12px 16px 12px 42px;
-  border: none;
-  border-radius: 3px;
-  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
-  color: #757575;
-  font-size: 14px;
-  font-weight: 500;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
-  background-color: white;
-  background-repeat: no-repeat;
-  background-position: 12px 11px;
-  margin: 1em;
-}
-
-.login-with-google-btn:hover {
-  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25);
-}
-
-.login-with-google-btn:active {
-  background-color: #eeeeee;
-}
-
-.login-with-google-btn:focus {
-  outline: none;
-  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25), 0 0 0 3px #c8dafc;
-}
-
-.login-with-google-btn:disabled {
-  filter: grayscale(100%);
-  background-color: #ebebeb;
-  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
-  cursor: not-allowed;
-}
 
 </style>
