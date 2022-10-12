@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from "vue";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
 import {useRouter } from 'vue-router'
 import { notify } from "@kyvg/vue3-notification";

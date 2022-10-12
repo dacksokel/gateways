@@ -2,16 +2,12 @@
     <nav>
         
     </nav>
-    <div>
-        esto es el dashboard :D
-    </div>
-
 </template>
 
 <script setup>
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>
