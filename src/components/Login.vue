@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref } from "vue";
-import SinginWithEmail from './Login/SinginWithEmail.vue'
+import SinginWithEmail from "./Login/SinginWithEmail.vue";
 import SinginWithGoogle from "./Login/SinginWithGoogle.vue";
 </script>
 
@@ -8,12 +8,11 @@ import SinginWithGoogle from "./Login/SinginWithGoogle.vue";
   <div class="login-page">
     <div class="form">
       <SinginWithEmail />
-      <hr>
-      
+      <hr />
+
       <SinginWithGoogle />
     </div>
   </div>
-
 </template>
 
 <style scoped>
@@ -33,6 +32,4 @@ import SinginWithGoogle from "./Login/SinginWithGoogle.vue";
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-
-
 </style>

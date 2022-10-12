@@ -128,5 +128,4 @@ const onSubmit = () => {
 .container .info span .fa {
   color: #ef3b3a;
 }
-
 </style>

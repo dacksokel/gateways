@@ -18,24 +18,30 @@
 
 <script setup>
 import { ref } from "vue";
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword } from "@firebase/auth";
+import { notify } from "@kyvg/vue3-notification";
 
 const email = ref("");
 const password = ref("");
 
 const registrar = async () => {
-  console.log("registrando...");
-  console.log("🚀 ~ file: Registro.vue ~ line 23 ~ email", email.value);
-  console.log("🚀 ~ file: Registro.vue ~ line 25 ~ password", password.value);
-  try {    
-   let data = await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+  try {
+    let data = await createUserWithEmailAndPassword(
+      getAuth(),
+      email.value,
+      password.value
+    );
 
-   if(data) console.log('registrado correctamente')
-
+    if (data) console.log("registrado correctamente");
   } catch (error) {
-    console.log("🚀 ~ file: Registro.vue ~ line 35 ~ registrar ~ error", error)    
-  }
+    if (error.code == 'auth/email-already-in-use') {
+      notify({
+        type:'error',
+        title: "ESTE CORREO YA ESTA REGISTRADO",
+      });
+    }
 
+  }
 };
 </script>
 
