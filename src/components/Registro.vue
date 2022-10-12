@@ -18,15 +18,24 @@
 
 <script setup>
 import { ref } from "vue";
-
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 
 const email = ref("");
 const password = ref("");
 
-const registrar = () => {
+const registrar = async () => {
   console.log("registrando...");
   console.log("🚀 ~ file: Registro.vue ~ line 23 ~ email", email.value);
   console.log("🚀 ~ file: Registro.vue ~ line 25 ~ password", password.value);
+  try {    
+   let data = await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+
+   if(data) console.log('registrado correctamente')
+
+  } catch (error) {
+    console.log("🚀 ~ file: Registro.vue ~ line 35 ~ registrar ~ error", error)    
+  }
+
 };
 </script>
 
@@ -136,5 +145,4 @@ const registrar = () => {
 .container .info span .fa {
   color: #ef3b3a;
 }
-
 </style>
