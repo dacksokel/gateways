@@ -3,23 +3,25 @@
     <h4>
       Status Gateways
     </h4>
-    <div>
-      <img :src="`${gateway.img}`">
-    </div>
-    <ul>
-      <li>Serial: {{gateway.id}}</li>
-      <li>Nombre: {{gateway.name}}</li>
-      <li>Ipv4 {{gateway.ipv4}}</li>
-      <li>Cantidad de Dispositivos Conectados: {{gateway.devices.length}}</li>
-      <li>Dispositivos Asociados: 
-        <ol>
-          <li v-for="device in gateway.devices">
-          {{deviceFormat(device)}}
-          </li>
-        </ol>  
-      </li>
+    <div class="container">
+      <div>
+        <img :src="`${gateway.img}`">
+      </div>
+      <ul>
+        <li><b>Serial:</b> {{gateway.id}}</li>
+        <li><b>Nombre:</b> {{gateway.name}}</li>
+        <li><b>Ipv4:</b> {{gateway.ipv4}}</li>
+        <li><b>Cantidad de Dispositivos Conectados: </b>{{gateway.devices.length}}</li>
+        <li><b>Dispositivos Asociados:</b>
+          <ol>
+            <li v-for="device in gateway.devices">
+              {{deviceFormat(device)}}
+            </li>
+          </ol>
+        </li>
 
-    </ul>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -51,13 +53,34 @@ const gateway = ref({
       status: 'Offline'
     },
   ],
-  img:'https://www.3cx.es/wp-content/uploads/sites/19/beroNet-gateways-voip-min-300x125.png'
+  img: 'https://www.3cx.es/wp-content/uploads/sites/19/beroNet-gateways-voip-min-300x125.png'
 });
 
-const deviceFormat = (d)=>{
+const deviceFormat = (d) => {
   return `id: ${d.id}, vendor: ${d.vendor}, Creado: ${d.creation}, Status: ${d.status}`
 }
 </script>
 
 <style scoped>
+.container div,
+ul {
+  width: 45%;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 auto;
+}
+
+.container div {
+  width: 20%;
+}
+
+.container div img {
+  width: 99%;
+}
+
+.container ul {
+  width: 70%;
+  font-size: 20px;
+  line-height: 40px;
+}
 </style>
