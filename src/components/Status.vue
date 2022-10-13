@@ -3,22 +3,17 @@
 </template>
 
 <script setup>
-    import { ref } from "vue";
+import { ref } from "vue";
 import { genMacs, genSingleIp } from "@/helpers/GenMAcsIps.js";
 
+const gateways = ref({
+  id: genMacs(),
+  name: "GatewayDefault",
+  ipv4: genSingleIp(0),
+  devices: [],
+});
 
-// const gateways = ref({});
-// let gatewaysConfig = {
-//   id: genMacs(),
-//   name: "GatewayDefault",
-//   ipv4: 
-// };
-// gateways.value = gatewaysConfig;
-// console.log("estatus ", gateways.value);
-
-console.log(genSingleIp())
-
-
+console.log("estatus ", gateways.value);
 </script>
 
 <style scoped>

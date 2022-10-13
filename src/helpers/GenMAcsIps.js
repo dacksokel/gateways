@@ -50,7 +50,7 @@ function* range(ip1, ip2) {
   }
 }
 
-export const genSingleIp = (prefix = 0) => {
+export const genSingleIp = (prefix) => {
   for (let ip of range(`192.168.${prefix}.0`, `192.168.${prefix}.10`)) {
     // console.log(ip);
     if(ip != undefined) return ip
