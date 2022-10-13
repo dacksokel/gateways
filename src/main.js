@@ -4,7 +4,7 @@ import router from "./router";
 // imports simple alertas
 import Notifications from '@kyvg/vue3-notification'
 // import Firebase from './firebase'
-import "./firebase/index";
+import "./firebase";
 import VueUniversalModal from 'vue-universal-modal';
 
 

@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { getAuth, signInWithEmailAndPassword } from "@firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signOut } from "@firebase/auth";
 import { useRouter } from "vue-router";
 import { notify } from "@kyvg/vue3-notification";
 
@@ -37,6 +37,7 @@ const onSubmit = async () => {
     }
   }
 };
+
 </script>
 
 <template>

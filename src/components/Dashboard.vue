@@ -1,35 +1,22 @@
 <template>
-    <nav>
-
-    </nav>
-    <div>
-        esto es el dashboard :D
-    </div>
-
+  <Menu/>
+  <!-- <div>esto es el dashboard :D {{ user.email }}</div> -->
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue';
+<script async setup>
+import { onMounted, ref, onUpdated } from "vue";
+import { getAuth, signOut } from "@firebase/auth";
+import { userAuthState } from "../firebase";
+import { useRouter } from "vue-router";
 
-
-import { getAuth } from "@firebase/auth";
+// componetes
+import Menu from './menu/Menu.vue'
 
 const auth = getAuth();
-const user = auth.currentUser;
-console.log("🚀 ~ file: Dashboard.vue ~ line 19 ~ user", user)
+const { user } = userAuthState();
+const router = useRouter();
 
-if (user !== null) {
-  user.providerData.forEach((profile) => {
-    console.log("Sign-in provider: " + profile.providerId);
-    console.log("  Provider-specific UID: " + profile.uid);
-    console.log("  Name: " + profile.displayName);
-    console.log("  Email: " + profile.email);
-    console.log("  Photo URL: " + profile.photoURL);
-  });
-}
-
+onUpdated(()=>{}); //esta linea es importante ya que con esta actualizamos el render y los datos que vienen del userAythState
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

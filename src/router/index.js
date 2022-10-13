@@ -21,13 +21,14 @@ const router = createRouter({
       meta: { requiresUnauth: true },
     },
     {
-      path: "/dashboard",
+      path: "/dashboard/",
       name: "dashboard",
-      meta: { requiresAuth: true },
       component: () => import("../views/DashboardView.vue"),
+      meta: { requiresAuth: true },
       children: [
         {
           path: "jhony",
+          component: () => import("../views/GatewaysView.vue"),
         },
       ],
     },

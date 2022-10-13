@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { initializeApp } from "firebase/app";
-import { computed, onMounted, onUnmounted } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -16,7 +16,7 @@ export const firebaseConfig = initializeApp({
 });
 
 export const userAuthState = () => {
-  const user = ref(null);
+  const user = ref({});
   const error = ref(null);
 
   const auth = getAuth();
@@ -43,8 +43,8 @@ export const userAuthState = () => {
 };
 
 export const getUserState = () => {
-  new Promise((resolve, reject) => {
-    onAuthStateChanged(getAuth(), resolve, reject);
-  });
+  const auth = getAuth();
+  return new Promise((resolve, reject) =>
+    onAuthStateChanged(auth, resolve, reject)
+  );
 };
-// module.exports = { StarFirebase };
