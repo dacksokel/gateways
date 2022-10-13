@@ -1,7 +1,7 @@
 <template>
     <nav class="nav">
         <ul>
-            <li><RouterLink :to="{name:'dashboard'}">Status</RouterLink></li>
+            <li><RouterLink :to="{name:'status'}">Status</RouterLink></li>
             <li><RouterLink :to="{name:'jhony'}">Jhony</RouterLink></li>
             <!-- <li>
                 <a href="#">Codes</a>
