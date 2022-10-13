@@ -1,6 +1,8 @@
 <template>
   <Menu/>
   <!-- <div>esto es el dashboard :D {{ user.email }}</div> -->
+  <RouterView />
+
 </template>
 
 <script async setup>

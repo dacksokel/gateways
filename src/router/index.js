@@ -24,16 +24,18 @@ const router = createRouter({
       path: "/dashboard/",
       name: "dashboard",
       component: () => import("../views/DashboardView.vue"),
-      meta: { requiresAuth: true },
       children: [
         {
           path: "jhony",
+          name:'jhony',
           component: () => import("../views/GatewaysView.vue"),
         },
       ],
+      meta: { requiresAuth: true },
     },
   ],
 });
+
 
 router.beforeEach(async (to, from, next) => {
   const isAuth = await getUserState();
@@ -43,7 +45,7 @@ router.beforeEach(async (to, from, next) => {
   );
 
   if (requiresAuth && !isAuth) next("/");
-  else if (requiresUnauth && isAuth) next("/dashboard");
+  else if (requiresUnauth && isAuth) next("/dashboard/*");
   else next();
 });
 export default router;

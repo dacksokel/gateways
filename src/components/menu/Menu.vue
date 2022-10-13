@@ -1,8 +1,9 @@
 <template>
     <nav class="nav">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li>
+            <li><RouterLink :to="{name:'dashboard'}">Status</RouterLink></li>
+            <li><RouterLink :to="{name:'jhony'}">Jhony</RouterLink></li>
+            <!-- <li>
                 <a href="#">Codes</a>
                 <ul>
                     <li><a href="#">HTML 5</a></li>
@@ -18,7 +19,7 @@
                     <li><a href="#">Project 3</a></li>
                 </ul>
             </li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#">Contact</a></li> -->
             <li><button @click="logout">Logout</button></li>
         </ul>
     </nav>
