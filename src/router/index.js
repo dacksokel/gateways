@@ -33,7 +33,14 @@ const router = createRouter({
         {
           path: "config",
           name:'config',
-          component: () => import("../views/GatewaysConfigurationsView.vue"),
+          // component: () => import("../views/GatewaysConfigurationsView.vue"),
+          children:[
+            {
+              path:'gateway',
+              name:'gateway',
+              component:()=>import('../views/GatewaysConfigurationsView.vue')
+            }
+          ]
         },
       ],
       meta: { requiresAuth: true },

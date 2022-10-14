@@ -2,9 +2,9 @@
     <nav class="nav">
         <ul>
             <li><RouterLink :to="{name:'status'}">Status</RouterLink></li>
-            <li><RouterLink :to="{name:'config'}">Configuracion</RouterLink>
+            <li><a href="#">Configuracion</a>
                 <ul>
-                    <li><a href="#">Gateway</a></li>
+                    <li><RouterLink :to="{name:'gateway'}">Gateway</RouterLink></li>
                     <li><a href="#">Agregar Dispositivos</a></li>
                     <li><a href="#">JavaScript</a></li>
                 </ul></li>
