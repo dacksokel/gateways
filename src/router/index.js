@@ -31,9 +31,9 @@ const router = createRouter({
           component: ()=> import('../views/StatusView.vue')
         },
         {
-          path: "jhony",
-          name:'jhony',
-          component: () => import("../views/GatewaysView.vue"),
+          path: "config",
+          name:'config',
+          component: () => import("../views/GatewaysConfigurationsView.vue"),
         },
       ],
       meta: { requiresAuth: true },
