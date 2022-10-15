@@ -20,7 +20,8 @@
           <td>{{ dispositivo.id }}</td>
           <td>{{ dispositivo.vendor }}</td>
           <td>{{ dispositivo.creation }}</td>
-          <td>{{ dispositivo.status }}</td>
+          <td v-if="dispositivo.status">Online</td>
+          <td v-else>Offline</td>
           <td v-if="edit">
             <label :for="`${dispositivo.id}my-modal-3`" class="btn modal-button"
               >Editar</label
