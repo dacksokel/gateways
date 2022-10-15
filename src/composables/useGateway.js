@@ -3,8 +3,6 @@ import { genMacs, genSingleIp } from "@/helpers/GenMAcsIps.js";
 // import { useUserAuth } from "@/composables/useUserAuth";
 import { notify } from "@kyvg/vue3-notification";
 
-
-
 // const { user } = useUserAuth();
 
 const gateway = ref({
@@ -39,8 +37,9 @@ const cambiarImg = () => {
 };
 
 const guardarDatosGateway = () => {
-  validIpv4();
-  console.log(`guardando todos los cambbios`);
+  if (validIpv4()) {
+    console.log(`guardando todos los cambbios`);
+  }
 };
 
 const validIpv4 = () => {
@@ -50,51 +49,21 @@ const validIpv4 = () => {
    * 192.168.0.0/16	[192.168.0.0–192.168.255.255]	Red privada	Utilizado para las comunicaciones locales dentro de una red privada
    */
   let { ipv4 } = gateway.value;
-  ipv4 = ipv4.split('.')
-  let p1 = ipv4.some((n,index, ipv4)=> index == 1  && n === '168' && ipv4[index-1] === '192')
-  
-  if(p1 && (ipv4[2] <= 255 && ipv4[3] <= 255)){
-    console.log("validador de ips ", p1)
-    return
+  ipv4 = ipv4.split(".");
+  let p1 = ipv4.some(
+    (n, index, ipv4) => index == 1 && n === "168" && ipv4[index - 1] === "192"
+  );
+
+  if (p1 && ipv4[2] <= 255 && ipv4[3] <= 255) {
+    return p1;
   }
-  
-  switch (!p1) {
-    case ipv4[2] > 255:
-      //Statements executed when the
-      //result of expression matches value1
-      notify({
-        type:'error',
-        title: `Error IpV4 ${ipv4[2]}`,
-        text: `la ip deber ser menor a 255 en su 3 rango  ${ipv4[2]}`,
-      })
-      break;
-    case ipv4[3] > 255:
-      //Statements executed when the
-      //result of expression matches value2
-      notify({
-        type:'error',
-        title: `Error IpV4 ${ipv4[3]}`,
-        text: `la ip deber ser menor a 255 en su 4 rango ${ipv4[3]}` ,
-      });
-      break;
-   default:
-      //Statements executed when none of
-      //the values match the value of the expression
-      notify({
-        type:'error',
-        title: "Error IpV4",
-        text: `la ip debe tener 192.168 `,
-      })
-      break;
-    
-    }
-  // notify({
-  //   type:'error',
-  //   title: "Error IpV4",
-  //   text: "Valide que la ip contenga",
-  // });
-  console.log('validacion fallida revise que los parametros estan entre 255')
-  // return
+
+  notify({
+    type: "error",
+    title: "Error IpV4",
+    text: `la ip debe tener 192.168.xxx.xxx donde x < 255 `,
+  });
+  return false;
 };
 
 export function useGateway() {

@@ -1,20 +1,11 @@
 <template>
-  <div>
-    Dispositivos config {{user.email}}
-  </div>
+  <DispositivosConfig />
   <RouterView />
 
 </template>
 
 <script setup>
-import { useGateway } from '@/composables/useGateway'
-import { useUserAuth } from '@/composables/useUserAuth'
-import { onUpdated } from '@vue/runtime-core'
-
-const { user } = useUserAuth()
-const { gateway } = useGateway()
-
-console.log("dispositvios");
+import DispositivosConfig from '@/components/DispositivosConfig.vue'
 </script>
 
 <style scoped>
