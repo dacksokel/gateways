@@ -1,6 +1,6 @@
 <template>
   <div>
-    Gateway config {{user.displayName}}
+    Dispositivos config {{user.email}}
   </div>
   <RouterView />
 
@@ -9,11 +9,12 @@
 <script setup>
 import { useGateway } from '@/composables/useGateway'
 import { useUserAuth } from '@/composables/useUserAuth'
+import { onUpdated } from '@vue/runtime-core'
 
-const {user } = useUserAuth()
+const { user } = useUserAuth()
 const { gateway } = useGateway()
-console.log("🚀 ~ file: GatewaysConfigurationsView.vue ~ line 14 ~ user", user.value.email)
-console.log("gateways");
+
+console.log("dispositvios");
 </script>
 
 <style scoped>

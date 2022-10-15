@@ -12,7 +12,7 @@ export function useUserAuth() {
     const { user } = userAuthState();
   // vue metodos
   onUpdated(() => {
-    console.log("🚀 ~ file: useUserAuth.js ~ line 11 ~ user", user);
+    console.log("🚀 ~ file: useUserAuth.js ~ line 11 ~ user", user.value.email);
   });
 
   return {

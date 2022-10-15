@@ -5,8 +5,8 @@
             <li><a href="#">Configuracion</a>
                 <ul>
                     <li><RouterLink :to="{name:'gateway'}">Gateway</RouterLink></li>
-                    <li><a href="#">Agregar Dispositivos</a></li>
-                    <li><a href="#">JavaScript</a></li>
+                    <li><RouterLink :to="{name:'dispositivos'}">Dispositivos</RouterLink></li>
+                    <!-- <li><a href="#">JavaScript</a></li> -->
                 </ul></li>
             <!-- <li>
                 <a href="#">Codes</a>

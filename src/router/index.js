@@ -39,6 +39,11 @@ const router = createRouter({
               path:'gateway',
               name:'gateway',
               component:()=>import('../views/GatewaysConfigurationsView.vue')
+            },
+            {
+              path:'dispositivos',
+              name:'dispositivos',
+              component:()=>import('../views/DevicesConfigurationsView.vue')
             }
           ]
         },
