@@ -10,7 +10,6 @@ import "./firebase";
 
 // css globales
 import "./assets/main.css";
-import 'vue-universal-modal/dist/index.css';
 
 const app = createApp(App);
 
