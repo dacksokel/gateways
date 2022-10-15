@@ -1,8 +1,11 @@
-import { ref } from "vue";
+import { isVNode, ref } from "vue";
 import { genMacs, genSingleIp } from "@/helpers/GenMAcsIps.js";
-import { useUserAuth } from "@/composables/useUserAuth";
+// import { useUserAuth } from "@/composables/useUserAuth";
+import { notify } from "@kyvg/vue3-notification";
 
-const { user } = useUserAuth();
+
+
+// const { user } = useUserAuth();
 
 const gateway = ref({
   id: genMacs(),
@@ -10,19 +13,19 @@ const gateway = ref({
   ipv4: genSingleIp(0),
   devices: [
     {
-      id: genMacs(),
+      id: 1,
       vendor: "dispositivo 1",
       creation: new Date("Jul 12 2022"),
       status: "Online",
     },
     {
-      id: genMacs(),
+      id: 2,
       vendor: "dispositivo 2",
       creation: new Date("Jul 12 2022"),
       status: "Online",
     },
     {
-      id: genMacs(),
+      id: 3,
       vendor: "dispositivo 3",
       creation: new Date("Jul 12 2022"),
       status: "Offline",
@@ -31,17 +34,73 @@ const gateway = ref({
   img: "https://www.3cx.es/wp-content/uploads/sites/19/beroNet-gateways-voip-min-300x125.png",
 });
 
-export function useGateway() {
-  const cambiarImg = () => {
-    console.log("cambiando imagen");
-  };
+const cambiarImg = () => {
+  console.log("cambiando imagen");
+};
 
-  const guardarDatosGateway = ()=>{
-    console.log(`guardando todos los cambbios`)
+const guardarDatosGateway = () => {
+  validIpv4();
+  console.log(`guardando todos los cambbios`);
+};
+
+const validIpv4 = () => {
+  /**
+   * las ips que son validas son las siguientes
+   * 10.0.0.0/8	[10.0.0.0–10.255.255.255]		Red privada	Utilizado para las comunicaciones locales dentro de una red privada.
+   * 192.168.0.0/16	[192.168.0.0–192.168.255.255]	Red privada	Utilizado para las comunicaciones locales dentro de una red privada
+   */
+  let { ipv4 } = gateway.value;
+  ipv4 = ipv4.split('.')
+  let p1 = ipv4.some((n,index, ipv4)=> index == 1  && n === '168' && ipv4[index-1] === '192')
+  
+  if(p1 && (ipv4[2] <= 255 && ipv4[3] <= 255)){
+    console.log("validador de ips ", p1)
+    return
   }
+  
+  switch (!p1) {
+    case ipv4[2] > 255:
+      //Statements executed when the
+      //result of expression matches value1
+      notify({
+        type:'error',
+        title: `Error IpV4 ${ipv4[2]}`,
+        text: `la ip deber ser menor a 255 en su 3 rango  ${ipv4[2]}`,
+      })
+      break;
+    case ipv4[3] > 255:
+      //Statements executed when the
+      //result of expression matches value2
+      notify({
+        type:'error',
+        title: `Error IpV4 ${ipv4[3]}`,
+        text: `la ip deber ser menor a 255 en su 4 rango ${ipv4[3]}` ,
+      });
+      break;
+   default:
+      //Statements executed when none of
+      //the values match the value of the expression
+      notify({
+        type:'error',
+        title: "Error IpV4",
+        text: `la ip debe tener 192.168 `,
+      })
+      break;
+    
+    }
+  // notify({
+  //   type:'error',
+  //   title: "Error IpV4",
+  //   text: "Valide que la ip contenga",
+  // });
+  console.log('validacion fallida revise que los parametros estan entre 255')
+  // return
+};
+
+export function useGateway() {
   return {
     gateway,
     cambiarImg,
-    guardarDatosGateway
+    guardarDatosGateway,
   };
 }

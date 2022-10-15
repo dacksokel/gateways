@@ -13,20 +13,11 @@
       <ul>
         <li><b>Serial:</b> {{ gateway.id }}</li>
         <li><b>Nombre:</b> <input type="text" v-model="gateway.name"></li>
-        <li><b>Ipv4:</b> {{ gateway.ipv4 }}</li>
+        <li><b>Ipv4:</b> <input type="text" v-model="gateway.ipv4"></li>
         <li>
           <b>Cantidad de Dispositivos Conectados: </b
           >{{ gateway.devices.length }}
-        </li>
-        <li>
-          <b>Dispositivos Asociados:</b>
-          <!-- esto debe ser una tabla -->
-          <!-- <ol>
-                        <li v-for="device in gateway.devices">
-                            {{deviceFormat(device)}}
-                        </li>
-                    </ol> -->
-        </li>
+        </li>      
       </ul>
     </div>
     <button @click="guardarDatosGateway">
