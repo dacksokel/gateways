@@ -16,7 +16,7 @@
         <label class="label">Vendor:</label>
         <input
           type="text"
-          placeholder="Type here"
+          placeholder="ingrese el Proveedor"
           class="input input-bordered w-full max-w-xs"
           v-model="vendor"
         />
@@ -42,7 +42,7 @@ import { ref } from "vue";
 import { useGateway } from "@/composables/useGateway";
 
 const { gateway, addDevice } = useGateway();
-const vendor = ref(`dispositivo`);
+const vendor = ref('');
 const status = ref(true);
 
 const addD = () => {

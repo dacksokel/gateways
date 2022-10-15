@@ -65,10 +65,9 @@ const addDevice = (device) => {
 };
 
 const deleteDevice = (deviceId)=>{    
-  // console.log('delete device en la posicion ',deviceId)
   gateway.value.devices = gateway.value.devices.filter(n=> n.id !== deviceId)  
   notify({
-    type: "sucess",
+    type: "success",
     title: "Dispositivo Eliminado",
     text: `Se a eliminado un dispositivo correctamente `,
   });
