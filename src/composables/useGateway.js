@@ -32,8 +32,9 @@ const gateway = ref({
   img: "https://www.3cx.es/wp-content/uploads/sites/19/beroNet-gateways-voip-min-300x125.png",
 });
 
-const cambiarImg = () => {
-  console.log("cambiando imagen");
+const cambiarImg = (event) => {
+  gateway.value.img = event.target.files[0]
+  console.log("cambiando imagen ",gateway.value.img);
 };
 
 const guardarDatosGateway = () => {
