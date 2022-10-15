@@ -22,18 +22,25 @@
           <td>{{ dispositivo.creation }}</td>
           <td>{{ dispositivo.status }}</td>
           <td>
-              <label :for="`${dispositivo.id}my-modal-3`" class="btn modal-button">Editar</label>
+            <label :for="`${dispositivo.id}my-modal-3`" class="btn modal-button"
+              >Editar</label
+            >
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-  <EditDevicesModal v-for="device in gateway.devices" :id="device.id" :device="device"/>
-  </template>
+  <EditDevicesModal
+    v-for="device in gateway.devices"
+    :id="device.id"
+    :device="device"
+    :key="device.id"
+  />
+</template>
 
 <script setup>
-import { useGateway } from "@/composables/useGateway"
-import EditDevicesModal from './Modals/EditDevicesModal.vue'
+import { useGateway } from "@/composables/useGateway";
+import EditDevicesModal from "./Modals/EditDevicesModal.vue";
 const { gateway } = useGateway();
 
 const showModal = () => {};
