@@ -1,9 +1,7 @@
-import { isVNode, onUnmounted, ref } from "vue";
+import { ref } from "vue";
 import { genMacs, genSingleIp } from "@/helpers/GenMAcsIps.js";
-// import { useUserAuth } from "@/composables/useUserAuth";
 import { notify } from "@kyvg/vue3-notification";
 
-// const { user } = useUserAuth();
 
 const gateway = ref({
   id: genMacs(),
