@@ -1,4 +1,4 @@
-import { isVNode, ref } from "vue";
+import { isVNode, onUnmounted, ref } from "vue";
 import { genMacs, genSingleIp } from "@/helpers/GenMAcsIps.js";
 // import { useUserAuth } from "@/composables/useUserAuth";
 import { notify } from "@kyvg/vue3-notification";
@@ -33,8 +33,12 @@ const gateway = ref({
 });
 
 const cambiarImg = (event) => {
-  gateway.value.img = event.target.files[0]
-  console.log("cambiando imagen ",gateway.value.img);
+  gateway.value.img = event.target.files[0];
+  console.log(
+    "🚀 ~ file: useGateway.js ~ line 37 ~ cambiarImg ~ event.target.files[0]",
+    event.target.files[0]
+  );
+  console.log("cambiando imagen ", gateway.value.img);
 };
 
 const guardarDatosGateway = () => {
@@ -43,10 +47,10 @@ const guardarDatosGateway = () => {
   }
 };
 
-const addDevice = (device)=>{
-  gateway.value.devices.push(device)
-  console.log('dispositivo a gregado exitosamente')
-}
+const addDevice = (device) => {
+  gateway.value.devices.push(device);
+  console.log("dispositivo a gregado exitosamente");
+};
 
 const validIpv4 = () => {
   /**
@@ -72,11 +76,11 @@ const validIpv4 = () => {
   return false;
 };
 
-export function useGateway() {
+export const useGateway = () => {
   return {
     gateway,
     cambiarImg,
     guardarDatosGateway,
-    addDevice
+    addDevice,
   };
-}
+};
