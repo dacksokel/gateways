@@ -31,8 +31,6 @@ const vendor = ref(`dispositivo`);
 const status = ref(true);
 
 const addD = () => {
-    console.log("🚀 ~ file: AddDevicesModal.vue ~ line 31 ~ vendor", vendor.value)
-    console.log("🚀 ~ file: AddDevicesModal.vue ~ line 32 ~ status", status.value)
     let dispositivo = {
         id: gateway.value.devices.length + 1,
         vendor: vendor.value,

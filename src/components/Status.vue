@@ -13,20 +13,18 @@
         <li><b>Ipv4:</b> {{gateway.ipv4}}</li>
         <li><b>Cantidad de Dispositivos Conectados: </b>{{gateway.devices.length}}</li>
         <li><b>Dispositivos Asociados:</b>
-          <ol>
-            <li v-for="device in gateway.devices">
-              {{deviceFormat(device)}}
-            </li>
-          </ol>
         </li>
-
+        
       </ul>
     </div>
   </div>
+  <TableDevices :devices="gateway.devices" :edit="false"/>
 </template>
 
 <script setup>
 import { useGateway } from '../composables/useGateway'
+import TableDevices from './tables/tablesDevices.vue'
+
 const { gateway } = useGateway()
 const deviceFormat = (d) => {
   return `id: ${d.id}, vendor: ${d.vendor}, Creado: ${d.creation}, Status: ${d.status}`
