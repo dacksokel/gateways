@@ -7,21 +7,41 @@
       <div>
         <img :src="`${gateway.img}`" />
         <p>
-          <input  type="file" @click="cambiarImg" />
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="file_input">Upload
+            file</label>
+          <input
+            class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+            id="file_input" type="file">
+
         </p>
       </div>
       <ul>
-        <li><b>Serial:</b> {{ gateway.id }}</li>
-        <li><b>Nombre:</b> <input type="text" v-model="gateway.name"></li>
-        <li><b>Ipv4:</b> <input type="text" v-model="gateway.ipv4"></li>
+        <li><label class="label">
+            <span class="label-text text-xl text-gray-900 dark:text-white">Serial:
+              {{ gateway.id }}
+            </span>
+          </label></li>
         <li>
-          <b>Cantidad de Dispositivos Conectados: </b
-          >{{ gateway.devices.length }}
-        </li>      
+          <label class="label">
+            <span class="label-text text-xl text-gray-900 dark:text-white">Nombre:</span>
+          </label>
+          <input type="text" placeholder="Ingrese el nombre aqui" class="input input-bordered w-full max-w-xs"
+            v-model="gateway.name" />
+        </li>
+        <li>
+          <label class="label">
+            <span class="label-text text-xl text-gray-900 dark:text-white">IPV4:</span>
+          </label>
+          <input type="text" placeholder="Ingrese una Ip valida 192.168.xxx.xxx"
+            class="input input-bordered w-full max-w-xs" v-model="gateway.ipv4" />
+        </li>
+        <li>
+          <b>Cantidad de Dispositivos Conectados: </b>{{ gateway.devices.length }}
+        </li>
       </ul>
     </div>
-    <button @click="guardarDatosGateway">
-        Guardar
+    <button class="btn btn-active" id="guardar" @click="guardarDatosGateway">
+      Guardar
     </button>
   </section>
   <RouterView />
@@ -29,20 +49,20 @@
 
 <script setup>
 import { useGateway } from "@/composables/useGateway";
-const { gateway, cambiarImg,guardarDatosGateway } = useGateway();
+const { gateway, cambiarImg, guardarDatosGateway } = useGateway();
 </script>
 
 <style scoped>
 section {
   width: 99%;
+  text-align: center;
 }
 
 h2 {
   text-align: center;
 }
 
-.container {
-  border: solid;
+.container {  
   width: 60%;
   margin: 0 auto;
 }
@@ -53,6 +73,7 @@ ul {
   display: inline-block;
   vertical-align: top;
   margin: 0 auto;
+  padding: 1em;
 }
 
 .container div {
@@ -67,5 +88,7 @@ ul {
   width: 45%;
   font-size: 20px;
   line-height: 40px;
+}
+#guardar{  
 }
 </style>
