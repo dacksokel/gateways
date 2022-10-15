@@ -22,13 +22,11 @@
 </template>
 
 <script setup>
+import { onUpdated } from '@vue/runtime-core'
 import { useGateway } from '../composables/useGateway'
 import TableDevices from './tables/tablesDevices.vue'
 
 const { gateway } = useGateway()
-const deviceFormat = (d) => {
-  return `id: ${d.id}, vendor: ${d.vendor}, Creado: ${d.creation}, Status: ${d.status}`
-}
 </script>
 
 <style scoped>
