@@ -2,7 +2,7 @@
     <div class="espacios">
         <AgreagrDeviceModal/>
     </div>
-  <TableDevices :devices="gateway.devices" :edit="true"/>
+  <TableDevices :devices="gateway.devices" :edit="true" :deleteDevice="deleteDevice"/>
   <EditDevicesModal
     v-for="device in gateway.devices"
     :id="device.id"
@@ -17,7 +17,7 @@ import EditDevicesModal from "./Modals/EditDevicesModal.vue";
 import AgreagrDeviceModal from "./Modals/AddDevicesModal.vue";
 import TableDevices from './tables/tablesDevices.vue'
 
-const { gateway } = useGateway();
+const { gateway, deleteDevice } = useGateway();
 
 console.log("dispositvios");
 </script>
