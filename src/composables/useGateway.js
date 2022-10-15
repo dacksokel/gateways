@@ -48,9 +48,22 @@ const guardarDatosGateway = () => {
 };
 
 const addDevice = (device) => {
-  gateway.value.devices.push(device);
-  console.log("dispositivo a gregado exitosamente");
+  if(gateway.value.devices.length < 10){
+    gateway.value.devices.push(device);
+    notify({
+      type: "success",
+      title: "Argegado Dispositivo",
+      text: `Se a agregado un dispositivo exitosamente`,
+    });  
+    return
+  }
+  notify({
+    type: "error",
+    title: "Error Agregar Dispoistivo",
+    text: `Se a llegado al maximo de dispositivos a conectar`,
+  });
 };
+
 
 const validIpv4 = () => {
   /**
