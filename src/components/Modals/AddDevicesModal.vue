@@ -43,18 +43,24 @@ import { useGateway } from "@/composables/useGateway";
 
 const { gateway, addDevice } = useGateway();
 const vendor = ref('');
-const status = ref(true);
+const status = ref(false);
 
 const addD = () => {
   let dispositivo = {
     id: gateway.value.devices.length + 1,
     vendor: vendor.value,
-    creation: new Date("Jul 12 2022"),
+    creation: new Date(),
     status: status.value,
   };
-  document.querySelector('#my-modal-3').checked = false
-  addDevice(dispositivo);
+  
+  let res = addDevice(dispositivo);
+  if(res){
+    document.querySelector('#my-modal-3').checked = false
+    vendor.value = ''
+    status.value = false
+  }
 };
+
 </script>
 
 <style scoped></style>

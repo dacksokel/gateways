@@ -13,19 +13,19 @@ const gateway = ref({
     {
       id: 1,
       vendor: "dispositivo 1",
-      creation: new Date("Jul 12 2022"),
+      creation: new Date(),
       status: false,
     },
     {
       id: 2,
       vendor: "dispositivo 2",
-      creation: new Date("Jul 12 2022"),
+      creation: new Date(),
       status: true,
     },
     {
       id: 3,
       vendor: "dispositivo 3",
-      creation: new Date("Jul 12 2022"),
+      creation: new Date(),
       status: false,
     },
   ],
@@ -38,40 +38,59 @@ const cambiarImg = (event) => {
     "🚀 ~ file: useGateway.js ~ line 37 ~ cambiarImg ~ event.target.files[0]",
     event.target.files[0]
   );
-  console.log("cambiando imagen ", gateway.value.img);
+  notify({
+    type: "success",
+    title: "imagen",
+    text: `Se a guardados la imagen exitosamente`,
+  });
 };
 
 const guardarDatosGateway = () => {
   if (validIpv4()) {
-    console.log(`guardando todos los cambbios`);
+    notify({
+      type: "success",
+      title: "Gateway",
+      text: `Se a guardados los cambios exitosamente`,
+    });
   }
 };
 
 const addDevice = (device) => {
-  if(gateway.value.devices.length < 10){
+  if (gateway.value.devices.length < 10 && device.vendor != "") {
     gateway.value.devices.push(device);
     notify({
       type: "success",
       title: "Argegado Dispositivo",
       text: `Se a agregado un dispositivo exitosamente`,
-    });  
-    return
+    });
+    return true;
+  } 
+  if (!device.vendor) {
+    notify({
+      type: "error",
+      title: "Error Agregar Dispoistivo",
+      text: `debe completar los datos`,
+    });
+    return false;
   }
   notify({
     type: "error",
     title: "Error Agregar Dispoistivo",
     text: `Se a llegado al maximo de dispositivos a conectar`,
   });
+  return false;
 };
 
-const deleteDevice = (deviceId)=>{    
-  gateway.value.devices = gateway.value.devices.filter(n=> n.id !== deviceId)  
+const deleteDevice = (deviceId) => {
+  gateway.value.devices = gateway.value.devices.filter(
+    (n) => n.id !== deviceId
+  );
   notify({
     type: "success",
     title: "Dispositivo Eliminado",
     text: `Se a eliminado un dispositivo correctamente `,
   });
-}
+};
 
 const validIpv4 = () => {
   /**
@@ -103,6 +122,6 @@ export const useGateway = () => {
     cambiarImg,
     guardarDatosGateway,
     addDevice,
-    deleteDevice
+    deleteDevice,
   };
 };
