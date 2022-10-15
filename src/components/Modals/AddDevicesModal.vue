@@ -52,6 +52,7 @@ const addD = () => {
     creation: new Date("Jul 12 2022"),
     status: status.value,
   };
+  document.querySelector('#my-modal-3').checked = false
   addDevice(dispositivo);
 };
 </script>
