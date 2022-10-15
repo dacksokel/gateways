@@ -42,6 +42,11 @@ const guardarDatosGateway = () => {
   }
 };
 
+const addDevice = (device)=>{
+  gateway.value.devices.push(device)
+  console.log('dispositivo a gregado exitosamente')
+}
+
 const validIpv4 = () => {
   /**
    * las ips que son validas son las siguientes
@@ -71,5 +76,6 @@ export function useGateway() {
     gateway,
     cambiarImg,
     guardarDatosGateway,
+    addDevice
   };
 }

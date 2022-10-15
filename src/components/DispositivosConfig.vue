@@ -1,4 +1,7 @@
 <template>
+    <div class="espacios">
+        <AgreagrDeviceModal/>
+    </div>
   <div class="espacios overflow-x-auto mt-8">
     <table class="table w-full">
       <thead>
@@ -41,9 +44,10 @@
 <script setup>
 import { useGateway } from "@/composables/useGateway";
 import EditDevicesModal from "./Modals/EditDevicesModal.vue";
+import AgreagrDeviceModal from "./Modals/AddDevicesModal.vue";
+
 const { gateway } = useGateway();
 
-const showModal = () => {};
 console.log("dispositvios");
 </script>
 
@@ -51,5 +55,6 @@ console.log("dispositvios");
 .espacios {
   width: 60%;
   margin: 0 auto;
+  padding: 0.5em;
 }
 </style>
