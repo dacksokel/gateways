@@ -22,7 +22,6 @@
 </template>
 
 <script setup>
-import { onUpdated } from '@vue/runtime-core'
 import { useGateway } from '../composables/useGateway'
 import TableDevices from './tables/tablesDevices.vue'
 
