@@ -1,21 +1,6 @@
 <template>
-  <div>
-    Gateway config {{user.displayName}}
-  </div>
-  <RouterView />
-
+  <Gateway />
 </template>
-
 <script setup>
-import { useGateway } from '@/composables/useGateway'
-import { useUserAuth } from '@/composables/useUserAuth'
-
-const {user } = useUserAuth()
-const { gateway } = useGateway()
-console.log("🚀 ~ file: GatewaysConfigurationsView.vue ~ line 14 ~ user", user.value.email)
-console.log("gateways");
+import Gateway from "@/components/GatewayConfig.vue";
 </script>
-
-<style scoped>
-
-</style>
