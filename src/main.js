@@ -5,6 +5,7 @@ import router from "./router";
 import Notifications from '@kyvg/vue3-notification'
 // import Firebase from './firebase'
 import "./firebase";
+import VueElementLoading from 'vue-element-loading'
 
 
 
@@ -15,5 +16,6 @@ const app = createApp(App);
 
 app.use(router);
 app.use(Notifications)
+app.use(VueElementLoading)
 
 app.mount("#app");

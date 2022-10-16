@@ -2,7 +2,6 @@ import { ref } from "vue";
 import { genMacs, genSingleIp } from "@/helpers/GenMAcsIps.js";
 import { notify } from "@kyvg/vue3-notification";
 
-
 const gateway = ref({
   id: genMacs(),
   name: "GatewayDefault",
@@ -62,7 +61,7 @@ const addDevice = (device) => {
       text: `Se a agregado un dispositivo exitosamente`,
     });
     return true;
-  } 
+  }
   if (!device.vendor) {
     notify({
       type: "error",
@@ -115,18 +114,20 @@ const validIpv4 = (ip) => {
 };
 
 export const getGatewayApi = async (uid) => {
-  
   const dato = await fetch(`http://192.168.32.100:6006/gateway/creategateway`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({uid:uid}),
+    body: JSON.stringify({ uid: uid }),
   });
-  let res = await dato.json()
-  gateway.value = res.gateway
+  if (dato) {
+    let res = await dato.json();
+    gateway.value = res.gateway;
+    return false;
+  }
+  return true;
 };
-
 
 export const useGateway = () => {
   return {
@@ -135,6 +136,6 @@ export const useGateway = () => {
     guardarDatosGateway,
     addDevice,
     deleteDevice,
-    getGatewayApi
+    getGatewayApi,
   };
 };
