@@ -35,14 +35,14 @@
         </label>
       </p>
       <div class="modal-action">
-      <label :for="`${id}my-modal-3`" class="btn">Guardar</label>
+      <label :for="`${id}my-modal-3`" @click="editDevices" class="btn">Guardar</label>
     </div>
     </div>
   </div>
 </template>
 
 <script setup>
-defineProps(["id", "device"]);
+defineProps(["id", "device", "editDevices"]);
 
 </script>
 

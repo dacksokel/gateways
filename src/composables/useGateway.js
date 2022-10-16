@@ -35,6 +35,9 @@ const cambiarImg = (event) => {
     "🚀 ~ file: useGateway.js ~ line 37 ~ cambiarImg ~ event.target.files[0]",
     event.target.files[0]
   );
+
+  guardarDatosGateway();
+
   notify({
     type: "success",
     title: "imagen",
@@ -43,9 +46,11 @@ const cambiarImg = (event) => {
 };
 
 const guardarDatosGateway = async (name, ipv4) => {
-  if (validIpv4(ipv4)) {
-    gateway.value.name = name;
-    gateway.value.ipv4 = ipv4;
+  let ip = ipv4 ? ipv4 : gateway.value.ipv4;
+  
+  if (validIpv4(ip)) {
+    gateway.value.name = name ? name : gateway.value.name;
+    gateway.value.ipv4 = ip;
     const dato = await fetch(
       `http://192.168.32.100:6006/gateway/updategateway`,
       {
@@ -67,9 +72,18 @@ const guardarDatosGateway = async (name, ipv4) => {
   }
 };
 
-const addDevice = (device) => {
+const editDevices = ()=>{
+  guardarDatosGateway();
+  notify({
+    type: "success",
+    title: "Actualizado el Dispositivo",
+    text: `Se a actualizado un dispositivo exitosamente`,
+  });
+}
+const addDevice = async (device) => {
   if (gateway.value.devices.length < 10 && device.vendor != "") {
     gateway.value.devices.push(device);
+    guardarDatosGateway();
     notify({
       type: "success",
       title: "Argegado Dispositivo",
@@ -97,6 +111,7 @@ const deleteDevice = (deviceId) => {
   gateway.value.devices = gateway.value.devices.filter(
     (n) => n.id !== deviceId
   );
+  guardarDatosGateway();
   notify({
     type: "success",
     title: "Dispositivo Eliminado",
@@ -152,5 +167,6 @@ export const useGateway = () => {
     addDevice,
     deleteDevice,
     getGatewayApi,
+    editDevices
   };
 };
