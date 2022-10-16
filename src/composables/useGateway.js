@@ -42,13 +42,28 @@ const cambiarImg = (event) => {
   });
 };
 
-const guardarDatosGateway = (name, ipv4) => {
+const guardarDatosGateway = async (name, ipv4) => {
   if (validIpv4(ipv4)) {
-    notify({
-      type: "success",
-      title: "Gateway",
-      text: `Se a guardados los cambios exitosamente`,
-    });
+    gateway.value.name = name;
+    gateway.value.ipv4 = ipv4;
+    const dato = await fetch(
+      `http://192.168.32.100:6006/gateway/updategateway`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(gateway.value),
+      }
+    );
+    let res = await dato.json();
+    if (res.status) {
+      notify({
+        type: "success",
+        title: "Gateway",
+        text: `Se a guardados los cambios exitosamente`,
+      });
+    }
   }
 };
 

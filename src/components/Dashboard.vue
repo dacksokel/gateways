@@ -16,6 +16,7 @@ import { ref } from 'vue'
 
 const { user } = useUserAuth()
 const showLoading = ref(true)
+/***este timeout no me gusta pero es la unica forma rapida y sencilla que se me ocurrio */
 setTimeout(async () => {
   showLoading.value = await getGatewayApi(user.value.uid)
 }, 100);
