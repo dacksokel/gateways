@@ -1,5 +1,6 @@
 <template>
-  <vue-element-loading :active="showLoading" :is-full-screen="true" />
+  <vue-element-loading :active="showLoading" :is-full-screen="true" background-color="rgba(255, 255, 255, 2)"
+    text="Cargando" size="155" />
   <Menu />
   <RouterView />
 </template>
@@ -15,10 +16,8 @@ import { ref } from 'vue'
 
 const { user } = useUserAuth()
 const showLoading = ref(true)
-setTimeout(async() => {
-  console.log("🚀 ~ file: useUserAuth.js ~ line 7 ~ dashboard ~ user", user.value.uid)
+setTimeout(async () => {
   showLoading.value = await getGatewayApi(user.value.uid)
-  console.log("🚀 ~ file: Dashboard.vue ~ line 21 ~ setTimeout ~ showLoading.value ", showLoading.value )
 }, 100);
 
 </script>
