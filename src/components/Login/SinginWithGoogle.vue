@@ -1,8 +1,8 @@
 <script setup>
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
-import {useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import { notify } from "@kyvg/vue3-notification";
-
+import { getGatewayApi } from '@/composables/useGateway'
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
@@ -16,12 +16,14 @@ const singGoogle = async () => {
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
+    getGatewayApi(user.uid)
+
     notify({
       type: "success",
       title: "Login correcto :D",
     });
     router.push("/dashboard");
- 
+
   } catch (error) {
     // Handle Errors here.
     const errorCode = error.code;
