@@ -38,13 +38,21 @@ const registrar = async () => {
       type: 'success',
       title: 'Registro Existoso 🎉!!'
     })
-    router.push('/login')
+    router.push('/')
 
   } catch (error) {
+    console.log("🚀 ~ file: Registro.vue ~ line 44 ~ registrar ~ error", error)
     if (error.code == 'auth/email-already-in-use') {
       notify({
         type: 'error',
         title: "ESTE CORREO YA ESTA REGISTRADO",
+      });
+    }
+    if(error.code == 'auth/weak-password'){
+      notify({
+        type: 'error',
+        title: "PASSWORD ",
+        text:'Password poco segura o  debe contener mas de 6 digitos'
       });
     }
 

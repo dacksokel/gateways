@@ -62,7 +62,7 @@ router.beforeEach(async (to, from, next) => {
   );
 
   if (requiresAuth && !isAuth) next("/");
-  else if (requiresUnauth && isAuth) next("/dashboard/*");
+  else if (requiresUnauth && isAuth) next("/dashboard");
   else next();
 });
 export default router;
