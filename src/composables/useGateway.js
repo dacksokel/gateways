@@ -43,8 +43,8 @@ const cambiarImg = (event) => {
   });
 };
 
-const guardarDatosGateway = () => {
-  if (validIpv4()) {
+const guardarDatosGateway = (name, ipv4) => {
+  if (validIpv4(ipv4)) {
     notify({
       type: "success",
       title: "Gateway",
@@ -90,13 +90,13 @@ const deleteDevice = (deviceId) => {
   });
 };
 
-const validIpv4 = () => {
+const validIpv4 = (ip) => {
   /**
    * las ips que son validas son las siguientes
    * 10.0.0.0/8	[10.0.0.0–10.255.255.255]		Red privada	Utilizado para las comunicaciones locales dentro de una red privada.
    * 192.168.0.0/16	[192.168.0.0–192.168.255.255]	Red privada	Utilizado para las comunicaciones locales dentro de una red privada
    */
-  let { ipv4 } = gateway.value;
+  let ipv4 = ip;
   ipv4 = ipv4.split(".");
   let p1 = ipv4.some(
     (n, index, ipv4) => index == 1 && n === "168" && ipv4[index - 1] === "192"

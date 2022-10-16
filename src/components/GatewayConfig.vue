@@ -26,21 +26,21 @@
             <span class="label-text text-xl text-gray-900 dark:text-white">Nombre:</span>
           </label>
           <input type="text" placeholder="Ingrese el nombre aqui" class="input input-bordered w-full max-w-xs"
-            v-model="gateway.name" />
+            v-model="name" />
         </li>
         <li>
           <label class="label">
             <span class="label-text text-xl text-gray-900 dark:text-white">IPV4:</span>
           </label>
           <input type="text" placeholder="Ingrese una Ip valida 192.168.xxx.xxx"
-            class="input input-bordered w-full max-w-xs" v-model="gateway.ipv4" />
+            class="input input-bordered w-full max-w-xs" v-model="ipv4" />
         </li>
         <li>
           <b>Cantidad de Dispositivos Conectados: </b>{{ gateway.devices.length }}
         </li>
       </ul>
     </div>
-    <button class="btn btn-active" id="guardar" @click="guardarDatosGateway">
+    <button class="btn btn-active" id="guardar" @click="guardarDatosGateway(name, ipv4)">
       Guardar
     </button>
   </section>
@@ -48,8 +48,12 @@
 </template>
 
 <script setup>
+import {ref} from 'vue'
 import { useGateway } from "@/composables/useGateway";
 const { gateway, cambiarImg, guardarDatosGateway } = useGateway();
+
+const name = ref(gateway.value.name)
+const ipv4 = ref(gateway.value.ipv4)
 </script>
 
 <style scoped>
