@@ -8,9 +8,11 @@ import SinginWithGoogle from "./Login/SinginWithGoogle.vue";
 <template>
   <div class="login-page">
     <div class="form">
+      <header>
+        <h2>Login</h2>
+      </header>
       <SinginWithEmail />
       <hr />
-
       <SinginWithGoogle />
     </div>
   </div>

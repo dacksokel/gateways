@@ -1,32 +1,12 @@
 import { ref } from "vue";
-import { genMacs, genSingleIp } from "@/helpers/GenMAcsIps.js";
 import { notify } from "@kyvg/vue3-notification";
 
 const gateway = ref({
-  id: genMacs(),
-  name: "GatewayDefault",
-  ipv4: genSingleIp(0),
-  devices: [
-    {
-      id: 1,
-      vendor: "dispositivo 1",
-      creation: new Date(),
-      status: false,
-    },
-    {
-      id: 2,
-      vendor: "dispositivo 2",
-      creation: new Date(),
-      status: true,
-    },
-    {
-      id: 3,
-      vendor: "dispositivo 3",
-      creation: new Date(),
-      status: false,
-    },
-  ],
-  img: "https://www.3cx.es/wp-content/uploads/sites/19/beroNet-gateways-voip-min-300x125.png",
+  id: "",
+  name: "",
+  ipv4: "",
+  devices: [],
+  img: "",
 });
 
 const cambiarImg = async (event) => {
