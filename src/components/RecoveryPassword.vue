@@ -50,7 +50,7 @@
 import { ref } from "vue";
 import { notify } from "@kyvg/vue3-notification";
 import { useRouter } from "vue-router";
-
+import { urlApi } from '@/config'
 const email = ref("");
 const password = ref("");
 const showModal = ref(false);
@@ -58,7 +58,7 @@ const router = useRouter()
 const uid = ref("");
 const validarEmail = async () => {
   const data = await fetch(
-    `http://192.168.32.100:6006/gateway/emailValidate/${email.value}`
+    `${urlApi}/gateway/emailValidate/${email.value}`
   );
   let res = await data.json();
   if (res.status) {
@@ -75,7 +75,7 @@ const validarEmail = async () => {
 const guadarPassword = async () => {
   if (password.value) {
     const data = await fetch(
-      `http://192.168.32.100:6006/gateway/updatepassword`,
+      `${urlApi}/gateway/updatepassword`,
       {
         method: "POST",
         headers: {

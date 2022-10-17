@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import { notify } from "@kyvg/vue3-notification";
+import { urlApi } from "../config";
 
 const gateway = ref({
   id: "",
@@ -14,8 +15,7 @@ const cambiarImg = async (event) => {
   let datos = new FormData()
   datos.append('imagen', imagen)
   datos.append("uid", gateway.value.uid);
-  datos.append("estudiante", 1);
-  const dato = await fetch(`http://192.168.32.100:6006/gateway/uploadimg`, {
+  const dato = await fetch(`${urlApi}/gateway/uploadimg`, {
     method: "POST",
     body: datos,
   });
@@ -37,7 +37,7 @@ const guardarDatosGateway = async (name, ipv4) => {
     gateway.value.name = name ? name : gateway.value.name;
     gateway.value.ipv4 = ip;
     const dato = await fetch(
-      `http://192.168.32.100:6006/gateway/updategateway`,
+      `${urlApi}/gateway/updategateway`,
       {
         method: "POST",
         headers: {
@@ -129,7 +129,7 @@ const validIpv4 = (ip) => {
 };
 
 export const getGatewayApi = async (uid) => {
-  const dato = await fetch(`http://192.168.32.100:6006/gateway/creategateway`, {
+  const dato = await fetch(`${urlApi}/gateway/creategateway`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
