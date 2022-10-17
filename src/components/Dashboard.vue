@@ -10,7 +10,6 @@
 import Menu from './menu/Menu.vue'
 import { getGatewayApi } from '@/composables/useGateway'
 import { useUserAuth } from '@/composables/useUserAuth'
-import { onUpdated } from '@vue/runtime-core'
 import VueElementLoading from 'vue-element-loading'
 import { ref } from 'vue'
 

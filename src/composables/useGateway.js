@@ -67,10 +67,6 @@ const guardarDatosGateway = async (name, ipv4) => {
       }
     );
     let res = await dato.json();
-    console.log(
-      "🚀 ~ file: useGateway.js ~ line 65 ~ guardarDatosGateway ~ res",
-      res
-    );
     if (res.status) {
       notify({
         type: "success",
@@ -162,7 +158,7 @@ export const getGatewayApi = async (uid) => {
   });
   if (dato) {
     let res = await dato.json();
-    gateway.value = res.gateway;
+    gateway.value = res.gateway;    
     return false;
   }
   return true;

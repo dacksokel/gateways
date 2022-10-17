@@ -86,6 +86,7 @@ ul {
 
 .container div img {
   width: 99%;
+  height: 240px;
 }
 
 .container ul {
