@@ -21,31 +21,37 @@ const router = createRouter({
       meta: { requiresUnauth: true },
     },
     {
+      path: "/resetPassword",
+      name: "resetPassword",
+      component: () => import('../views/RecoveryPasswordView.vue')
+    },
+    {
       path: "/dashboard/",
       name: "dashboard",
       component: () => import("../views/DashboardView.vue"),
       children: [
         {
-          path:"",
-          name:'status',
-          component: ()=> import('../views/StatusView.vue')
+          path: "",
+          name: "status",
+          component: () => import("../views/StatusView.vue"),
         },
         {
           path: "config",
-          name:'config',
+          name: "config",
           // component: () => import("../views/GatewaysConfigurationsView.vue"),
-          children:[
+          children: [
             {
-              path:'gateway',
-              name:'gateway',
-              component:()=>import('../views/GatewaysConfigurationsView.vue')
+              path: "gateway",
+              name: "gateway",
+              component: () =>
+                import("../views/GatewaysConfigurationsView.vue"),
             },
             {
-              path:'dispositivos',
-              name:'dispositivos',
-              component:()=>import('../views/DevicesConfigurationsView.vue')
-            }
-          ]
+              path: "dispositivos",
+              name: "dispositivos",
+              component: () => import("../views/DevicesConfigurationsView.vue"),
+            },
+          ],
         },
       ],
       meta: { requiresAuth: true },

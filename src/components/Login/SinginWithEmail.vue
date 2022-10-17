@@ -51,6 +51,7 @@ const onSubmit = async () => {
     <p class="message">
       Not registered?
       <RouterLink to="/registro">Create an account</RouterLink>
+      <RouterLink to="/resetPassword">Forget Password/ Recovery Password</RouterLink>
     </p>
   </form>
 </template>
