@@ -1,5 +1,4 @@
 <script setup>
-import { onMounted, ref } from "vue";
 import SinginWithEmail from "./Login/SinginWithEmail.vue";
 import SinginWithGoogle from "./Login/SinginWithGoogle.vue";
 
