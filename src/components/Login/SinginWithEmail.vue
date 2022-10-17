@@ -41,9 +41,7 @@ const onSubmit = async () => {
 </script>
 
 <template>
-  <header>
-    <h2>LOGIN</h2>
-  </header>
+  
   <form class="login-form" @submit.prevent="onSubmit">
     <input type="text" placeholder="username" v-model="email" />
     <input type="password" placeholder="password" v-model="password" />

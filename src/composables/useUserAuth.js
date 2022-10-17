@@ -1,4 +1,3 @@
-import { onUpdated } from "vue";
 import { userAuthState } from "../firebase";
 
 // variables reactivas
