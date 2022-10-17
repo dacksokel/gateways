@@ -29,25 +29,30 @@ const gateway = ref({
   img: "https://www.3cx.es/wp-content/uploads/sites/19/beroNet-gateways-voip-min-300x125.png",
 });
 
-const cambiarImg = (event) => {
-  gateway.value.img = event.target.files[0];
-  console.log(
-    "🚀 ~ file: useGateway.js ~ line 37 ~ cambiarImg ~ event.target.files[0]",
-    event.target.files[0]
-  );
-
-  guardarDatosGateway();
-
-  notify({
-    type: "success",
-    title: "imagen",
-    text: `Se a guardados la imagen exitosamente`,
+const cambiarImg = async (event) => {
+  const imagen = event.target.files[0];
+  let datos = new FormData()
+  datos.append('imagen', imagen)
+  datos.append("uid", gateway.value.uid);
+  datos.append("estudiante", 1);
+  const dato = await fetch(`http://192.168.32.100:6006/gateway/uploadimg`, {
+    method: "POST",
+    body: datos,
   });
+  let res = await dato.json();
+  if (res.status) { 
+    gateway.value = res.gateway
+    notify({
+      type: "success",
+      title: "imagen",
+      text: `Se a guardados la imagen exitosamente`,
+    });
+  }
 };
 
 const guardarDatosGateway = async (name, ipv4) => {
   let ip = ipv4 ? ipv4 : gateway.value.ipv4;
-  
+
   if (validIpv4(ip)) {
     gateway.value.name = name ? name : gateway.value.name;
     gateway.value.ipv4 = ip;
@@ -62,6 +67,10 @@ const guardarDatosGateway = async (name, ipv4) => {
       }
     );
     let res = await dato.json();
+    console.log(
+      "🚀 ~ file: useGateway.js ~ line 65 ~ guardarDatosGateway ~ res",
+      res
+    );
     if (res.status) {
       notify({
         type: "success",
@@ -72,14 +81,14 @@ const guardarDatosGateway = async (name, ipv4) => {
   }
 };
 
-const editDevices = ()=>{
+const editDevices = () => {
   guardarDatosGateway();
   notify({
     type: "success",
     title: "Actualizado el Dispositivo",
     text: `Se a actualizado un dispositivo exitosamente`,
   });
-}
+};
 const addDevice = async (device) => {
   if (gateway.value.devices.length < 10 && device.vendor != "") {
     gateway.value.devices.push(device);
@@ -167,6 +176,6 @@ export const useGateway = () => {
     addDevice,
     deleteDevice,
     getGatewayApi,
-    editDevices
+    editDevices,
   };
 };
