@@ -71,4 +71,6 @@ describe("Login, Modifcar gateway, agrega y borra un dispositivo", () => {
 
 });
 
-describe("registra un nuevo usuario", ())
+describe("registra un nuevo usuario", () => { 
+  
+})
