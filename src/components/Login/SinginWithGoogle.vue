@@ -15,7 +15,7 @@ const singGoogle = async () => {
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
-  
+    console.log("🚀 ~ file: SinginWithGoogle.vue ~ line 18 ~ singGoogle ~ user", user)  
 
     notify({
       type: "success",

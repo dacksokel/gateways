@@ -8,7 +8,7 @@ import SinginWithGoogle from "./Login/SinginWithGoogle.vue";
   <div class="login-page">
     <div class="form">
       <header>
-        <h2>Login</h2>
+        <h2 data-test="login">Login</h2>
       </header>
       <SinginWithEmail />
       <hr />
