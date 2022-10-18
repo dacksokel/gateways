@@ -43,7 +43,7 @@ const onSubmit = async () => {
 <template>
   
   <form class="login-form" @submit.prevent="onSubmit">
-    <input type="text" placeholder="username" v-model="email" />
+    <input type="email" placeholder="username" v-model="email" />
     <input type="password" placeholder="password" v-model="password" />
     <button>login</button>
     <p class="message">

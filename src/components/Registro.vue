@@ -5,7 +5,7 @@
         <h2>Register</h2>
       </header>
       <form class="register-form" @submit.prevent="registrar">
-        <input type="text" placeholder="email address" v-model="email" />
+        <input type="email" placeholder="email address" v-model="email" />
         <input type="password" placeholder="password" v-model="password" />
         <button>create</button>
         <p class="message">

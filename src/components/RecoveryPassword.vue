@@ -6,7 +6,7 @@
       </header>
       <form class="login-form" @submit.prevent="validarEmail">
         <input
-          type="text"
+          type="email"
           placeholder="Email prueba@prueba.com"
           v-model="email"
         />
