@@ -45,7 +45,7 @@ const onSubmit = async () => {
   <form class="login-form" @submit.prevent="onSubmit">
     <input type="email" placeholder="username" id="email"  v-model="email" />
     <input type="password" placeholder="password" v-model="password" />
-    <button id="btnlogin" >login</button>
+    <button>login</button>
     <p class="message">
       Not registered?
       <RouterLink to="/registro">Create an account</RouterLink>

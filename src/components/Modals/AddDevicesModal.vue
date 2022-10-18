@@ -17,6 +17,7 @@
         <input
           type="text"
           placeholder="ingrese el Proveedor"
+          id="vendorinput"
           class="input input-bordered w-full max-w-xs"
           v-model="vendor"
         />
