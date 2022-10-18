@@ -1,6 +1,8 @@
 import { ref } from "vue";
 import { notify } from "@kyvg/vue3-notification";
 import { urlApi } from "../config";
+import { fbStorage } from "../firebase/storage";
+
 
 const gateway = ref({
   id: "",
@@ -12,23 +14,8 @@ const gateway = ref({
 
 const cambiarImg = async (event) => {
   const imagen = event.target.files[0];
-  let datos = new FormData()
-  datos.append('imagen', imagen)
-  datos.append("uid", gateway.value.uid);
-  const dato = await fetch(`${urlApi}/gateway/uploadimg`, {
-    method: "POST",
-    body: datos,
-  });
-  let res = await dato.json();
-  if (res.status) { 
-    gateway.value = res.gateway
-    notify({
-      type: "success",
-      title: "imagen",
-      text: `Se a guardados la imagen exitosamente`,
-    });
-  }
-};
+  fbStorage(imagen, gateway.value);
+}
 
 const guardarDatosGateway = async (name, ipv4) => {
   let ip = ipv4 ? ipv4 : gateway.value.ipv4;
@@ -36,16 +23,13 @@ const guardarDatosGateway = async (name, ipv4) => {
   if (validIpv4(ip)) {
     gateway.value.name = name ? name : gateway.value.name;
     gateway.value.ipv4 = ip;
-    const dato = await fetch(
-      `${urlApi}/gateway/updategateway`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(gateway.value),
-      }
-    );
+    const dato = await fetch(`${urlApi}/gateway/updategateway`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(gateway.value),
+    });
     let res = await dato.json();
     if (res.status) {
       notify({
@@ -138,7 +122,7 @@ export const getGatewayApi = async (uid) => {
   });
   if (dato) {
     let res = await dato.json();
-    gateway.value = res.gateway;    
+    gateway.value = res.gateway;
     return false;
   }
   return true;

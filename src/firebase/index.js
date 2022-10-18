@@ -2,6 +2,8 @@
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { initializeApp } from "firebase/app";
 import { computed, onMounted, onUnmounted, ref } from "vue";
+
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
