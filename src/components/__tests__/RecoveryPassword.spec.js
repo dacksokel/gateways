@@ -1,5 +1,5 @@
-import { beforeEach, describe, expect, it, test } from "vitest";
-import { mount, shallowMount, screen } from "@vue/test-utils";
+import {  describe, expect, it } from "vitest";
+import { shallowMount } from "@vue/test-utils";
 import RecoveryPassword from "@/components/RecoveryPassword.vue";
 
 describe("mount Registro components", async () => {
@@ -20,4 +20,5 @@ describe("Hacer login con email/password", async () => {
     await textInput.setValue(email);
     expect(wrapper.find('input[type="email"]').element.value).toBe(email);
   });
+    
 });
