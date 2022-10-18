@@ -3,12 +3,7 @@ import { mount, shallowMount, screen } from "@vue/test-utils";
 import Login from "@/components/login.vue";
 import SinginWithEmail from "@/components/Login/SinginWithEmail.vue";
 import SinginWithGoogle from "@/components/Login/SinginWithGoogle.vue";
-// import { firebaseConfig } from "@/firebase";
-// import {
-//   getAuth,
-//   signInWithEmailAndPassword,
-//   createUserWithEmailAndPassword,
-// } from "@firebase/auth";
+
 
 describe("mount Login components", async () => {
   it("El test pasa cuando los omponentes del Login estan montados", () => {
@@ -50,9 +45,9 @@ describe("Hacer login con email/password", async () => {
 });
 
 describe("validar que existe login con google ", async () => {
+    const wrapper = await shallowMount(SinginWithGoogle);
   it("Valida si existe button", async () => {
-      const wrapper = await shallowMount(SinginWithGoogle);
     //   expect(wrapper.exists()).toBe(true);
-    expect(wrapper.get(".login-with-google-btn").exists()).toBe(true);
+      expect(wrapper.get(".login-with-google-btn").exists()).toBe(true);
   });
 });
