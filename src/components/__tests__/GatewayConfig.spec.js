@@ -32,12 +32,12 @@ describe("Gateway", () => {
       vendor: "pruebas unitarias",
       creation: Date.now(),
     };
-    let res = await addDevice(dispositivo);
+    await addDevice(dispositivo);
     expect(gateway.value.devices.length > 0).toBe(true);
   });
 
   it("pasa si gateway los gateways son borrados", async () => {
-    let res = await deleteDevice(1);
+    await deleteDevice(1);
     console.log(
       "🚀 ~ file: GatewayConfig.spec.js ~ line 45 ~ it ~ gateway",
       gateway.value.devices
