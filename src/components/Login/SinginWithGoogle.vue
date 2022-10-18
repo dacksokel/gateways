@@ -4,18 +4,16 @@ import { useRouter } from 'vue-router'
 import { notify } from "@kyvg/vue3-notification";
 
 const provider = new GoogleAuthProvider();
-const auth = getAuth();
 const router = useRouter()
 
 const singGoogle = async () => {
   console.log("sing in with google");
   try {
-    const result = await signInWithPopup(auth, provider);
+    const result = await signInWithPopup(getAuth(), provider);
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
-    console.log("🚀 ~ file: SinginWithGoogle.vue ~ line 18 ~ singGoogle ~ user", user)  
 
     notify({
       type: "success",
