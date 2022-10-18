@@ -3,6 +3,7 @@ import { notify } from "@kyvg/vue3-notification";
 import { urlApi } from "../config";
 import { fbStorage } from "../firebase/storage";
 // import fetch from "node-fetch";
+import fetch from "cross-fetch";
 
 const gateway = ref({
   id: "",

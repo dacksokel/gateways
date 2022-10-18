@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@kyvg/vue3-notification": "^2.4.1",
+    "cross-fetch": "^3.1.5",
     "daisyui": "^2.31.0",
     "firebase": "^9.12.0",
     "vue": "^3.2.38",
