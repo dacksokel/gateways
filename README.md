@@ -1,48 +1,45 @@
-# managing gateways
+# Frontend gateways
 
-This template should help get you started developing with Vue 3 in Vite.
+## Este proyecto esta anclado en firebase usando los siguientes recursos de dicha plataforma:
 
-## Recommended IDE Setup
+### Storage
+### Firebase Funtions
+### Firebase Database
+### Firebase Hosting
+### Firebase Auth
+### Firebase Admin (SDK)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+Para instalar este repositorio solo necesita hacer 
 
 ```sh
-npm install
+npm install 
+```
+## Tambien puede hacer par aque se instalen los repositorios y versiones que se uso en el proyecto
+
+```sh
+npm ci
 ```
 
-### Compile and Hot-Reload for Development
+### Una vez instalado puede hacer uso del
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### Para desplegar en el modo produccion debe hacer previamente este comando,
+### tambien puede ver la demo del mismo en https://prueba-dacksokel.web.app
 
 ```sh
 npm run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### Para ejecutar las pruebas tanto unitaras como las de end to end puede ejecutar los siguientes comandos [Vitest](https://vitest.dev/)
 
 ```sh
 npm run test:unit
 ```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
 ```sh
 npm run build
 npm run test:e2e # or `npm run test:e2e:ci` for headless testing
 ```
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
